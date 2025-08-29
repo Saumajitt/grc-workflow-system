@@ -31,7 +31,7 @@ A comprehensive **Third Party Risk Management (TPRM)** application built with Sp
          │                       │                       │
          │              ┌─────────────────┐    ┌─────────────────┐
          │              │     Redis       │    │     MinIO       │
-         └──────────────►│   Cache         │    │  Object Storage │
+         └─────────────►│   Cache         │    │  Object Storage │ 
                         │   (Port 6379)   │    │   (Port 9000)   │
                         └─────────────────┘    └─────────────────┘
                                  │                       │
