@@ -1,0 +1,35 @@
+[build]
+  base = "frontend"
+  publish = "build"
+  command = "npm run build"
+
+[build.environment]
+  NODE_VERSION = "18"
+  NPM_VERSION = "9"
+
+[[redirects]]
+  from = "/api/*"
+  to = "https://grc-backend.herokuapp.com/api/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[context.production.environment]
+  REACT_APP_API_BASE_URL = "https://grc-backend.herokuapp.com"
+  REACT_APP_FILE_UPLOAD_MAX_SIZE = "52428800"
+  REACT_APP_SUPPORTED_FILE_TYPES = "pdf,doc,docx,xls,xlsx,png,jpg,jpeg,gif,txt,csv"
+
+[context.deploy-preview.environment]
+  REACT_APP_API_BASE_URL = "https://grc-backend-staging.herokuapp.com"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
